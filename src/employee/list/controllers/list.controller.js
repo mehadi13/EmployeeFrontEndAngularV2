@@ -40,4 +40,15 @@ app.controller("ListController", function ($scope,$rootScope, DataService, NgTab
 
     $scope.getList();
 
+    $scope.searchElements = [];
+    $scope.removeSearch = function () {
+        var lastItem = $scope.searchElements.length - 1;
+        $scope.searchElements.splice(lastItem);
+    }
+
+    $scope.addNewSearch = function () {
+        var newItemNo = $scope.searchElements.length + 1;
+        $scope.searchElements.push({ 'id': 'element' + newItemNo });
+    }
+
 });

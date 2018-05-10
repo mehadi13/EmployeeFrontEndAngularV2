@@ -1,8 +1,11 @@
 app.directive('emInput', function () {
     return {
         restrict: 'E',
+    //    controller: 'EMInputController',
         scope: {
-            model: '='
+            value: '=',
+            error: '=?',
+            editMode: '='
         },
         templateUrl: '/src/employee/app/templates/em-input.html'
     };

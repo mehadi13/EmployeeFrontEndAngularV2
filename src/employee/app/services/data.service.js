@@ -11,6 +11,32 @@ app.service("DataService", function($http) {
         return data;
     };
 
+    this.postData = function (path,data) {
+        console.log('service call')
+        var data = $http.post(rootUrl + path, data).
+            then(function (response) {
+                console.log('response success');
+                return response.data;
+            }, function (error) {
+                console.log('response error');
+                return error.data;
+            });
+        return data;
+    };
+
+    this.putData = function (path, data) {
+        console.log('service call')
+        var data = $http.post(rootUrl + path, data).
+            then(function (response) {
+                console.log('response success');
+                return response.data;
+            }, function (error) {
+                console.log('response error');
+                return error.data;
+            });
+        return data;
+    };
+
 });
 
     

@@ -5,31 +5,30 @@
             <b>Employees</b>
         </div>
     </div>
-    <!-- <div class="row">
+    <div class="row">
         <div class="col-md-12">
             <div class="container">
-                <div class="row serchBox" data-ng-repeat="searchElement in mainCtrl.searchElements">
+                <div class="row serchBox" data-ng-repeat="searchElement in searchElements">
                     <div class="col-sm-2"></div>
                     <select class="col-sm-2 form-control" ng-model="searchElement.searchSelect">
                         <option value="name">Name</option>
                         <option value="workEmail">Work Email</option>
                         <option value="workPhone">Work Phone</option>
                         <option value="department.name">Department</option>
-                        <option value="manager.name">Manager</option>
                     </select>
                     <input class="col-sm-5 form-control" type="text" ng-model="searchElement.searchText">
                     <select class="col-sm-1 form-control" ng-model="searchElement.operator">
                         <option value="and">AND</option>
                         <option value="or">OR</option>
                     </select>
-                    <button class="btn btn-sm remove" ng-show="$last" ng-click="mainCtrl.removeSearch()">-</button>
+                    <button class="btn btn-sm remove" ng-show="$last" ng-click="removeSearch()">-</button>
                     <div class="col-sm-2"></div>
                     <br>
                 </div>
             </div>
-            <button class="btn btn-sm btn-light btn-outline-secondary" ng-click="mainCtrl.addNewSearch()">Add Search fields</button>
+            <button class="btn btn-sm btn-light btn-outline-secondary" ng-click="addNewSearch()">Add Search fields</button>
         </div>
-    </div> -->
+    </div>
     <div class="row">
         <div class="col-md-12">
             <hr>
@@ -56,7 +55,7 @@
 
     <div class="table-responsive">
         <table ng-table="tableParams" class="table table-striped table-sm">
-            <tr  ng-repeat="employee in $data" >
+            <tr  ng-repeat="employee in $data | andorfilter:searchElements" >
                 <td title="'Name'">
                     <a ng-href="/employees/{{employee.name}}" ng-click="broadcastEmployee($index)">
                     {{employee.name}}

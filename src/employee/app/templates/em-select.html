@@ -1,0 +1,4 @@
+<select class="form-control" ng-model="select" ng-show="editMode" ng-options="getValue(item) for item in list track by item.id">
+    <option value="">Choose</option>
+</select>
+<span class="form-control" style="border: none" ng-hide="editMode">{{select.name}}</span>

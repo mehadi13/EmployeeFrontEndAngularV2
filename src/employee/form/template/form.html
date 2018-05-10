@@ -6,44 +6,39 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-sm btn-primary">{{btnOne}}</button>
-            <button class="btn btn-sm btn-primary">{{btnTwo}}</button>
+        <div class="col-md-12" ng-hide="editMode">
+            <button class="btn btn-sm btn-primary" ng-click="edit()">Edit</button>
+            <button class="btn btn-sm btn-primary" ng-click="create()">Create</button>
         </div>
-        
-        <!-- <div class="col-md-12">
-            <button class="btn btn-sm btn-primary">Save</button>
-            <button class="btn btn-sm btn-light btn-outline-secondary" >Discard</button>
-        </div> -->
+
+        <div class="col-md-12" ng-show="editMode">
+            <button class="btn btn-sm btn-primary" ng-click="save()">Save</button>
+            <button class="btn btn-sm btn-primary" ng-click="discard()">Discard</button>
+        </div>
 
     </div>
-    <em-input model="test"></em-input>
+
     <hr>
     <form>
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group">
-                    <label for="inputEmployeeName">Name</label>
-                    <input type="text" class="form-control" id="inputEmployeeName" ng-model="employee.name">
-                    <span class="form-control" style="border: none">{{employee.name}}</span>
-                    <span class="errorText">{{mainCtrl.errors.name}}</span>
+                    <label>Name</label>
+                    <em-input value="employee.name" error="errors.name" edit-mode="editMode"></em-input>
                 </div>
                 <div class="form-group">
-                    <label for="inputJobType">Job Type</label>
-                    <select class="form-control" id="inputJobType" ng-show="mainCtrl.editMode" ng-options="jobtype.name for jobtype in mainCtrl.jobtypes track by jobtype.id"
-                        ng-model="mainCtrl.employee.jobtype">
-                    </select>
-                    <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.jobtype.name}}</span>
+                    <label>Job Type</label>
+                    <em-select list="jobtypes" select="employee.jobtype" edit-mode="editMode"></em-select>
                 </div>
             </div>
         </div>
 
         <nav>
             <div class="nav nav-tabs" role="tablist">
-                <a class="nav-item nav-link active" data-toggle="tab" href="#nav-public" role="tab" aria-controls="nav-public"
-                    aria-selected="true" target="_self">Public Information</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#nav-personal" role="tab" aria-controls="nav-personal"
-                    aria-selected="false" target="_self">Personal Information</a>
+                <a class="nav-item nav-link active" data-toggle="tab" href="#nav-public" role="tab" aria-controls="nav-public" aria-selected="true"
+                    target="_self">Public Information</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#nav-personal" role="tab" aria-controls="nav-personal" aria-selected="false"
+                    target="_self">Personal Information</a>
             </div>
         </nav>
 
@@ -55,91 +50,67 @@
                         <h4>Contact Information</h4>
 
                         <div class="form-group row">
-                            <label for="inputWorkAdderss" class="col-sm-4 col-form-label">Work Address</label>
+                            <label class="col-sm-4 col-form-label">Work Address</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputWorkAdderss" ng-model="mainCtrl.employee.workAddress" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.workAddress}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.workAddress}}</span>
+                                <em-input value="employee.workAddress" error="errors.workAddress" edit-mode="editMode"></em-input>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputWorkMobile" class="col-sm-4 col-form-label">Work Mobile</label>
+                            <label class="col-sm-4 col-form-label">Work Mobile</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputWorkMobile" ng-model="mainCtrl.employee.workMobile" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.workMobile}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.workMobile}}</span>
+                                <em-input value="employee.workMobile" error="errors.workMobile" edit-mode="editMode"></em-input>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputWorkLocation" class="col-sm-4 col-form-label">Work Location</label>
+                            <label class="col-sm-4 col-form-label">Work Location</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputWorkLocation" ng-model="mainCtrl.employee.workLocation" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.workLocation}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.workLocation}}</span>
+                                <em-input value="employee.workLocation" error="errors.workLocation" edit-mode="editMode"></em-input>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputWorkEmail" class="col-sm-4 col-form-label">Work Email</label>
+                            <label class="col-sm-4 col-form-label">Work Email</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputWorkEmail" ng-model="mainCtrl.employee.workEmail" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.workEmail}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.workEmail}}</span>
+                                <em-input value="employee.workEmail" error="errors.workEmail" edit-mode="editMode"></em-input>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputWorkPhone" class="col-sm-4 col-form-label">Work Phone</label>
+                            <label class="col-sm-4 col-form-label">Work Phone</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputWorkPhone" ng-model="mainCtrl.employee.workPhone" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.workPhone}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.workPhone}}</span>
+                                <em-input value="employee.workPhone" error="errors.workPhone" edit-mode="editMode"></em-input>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="col-md-6">
                         <h4>Position</h4>
                         <div class="form-group row">
-                            <label for="inputDepartment" class="col-sm-4 col-form-label">Department</label>
+                            <label class="col-sm-4 col-form-label">Department</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputDepartment" ng-show="mainCtrl.editMode" ng-options="department.name for department in mainCtrl.departments track by department.id"
-                                    ng-model="mainCtrl.employee.department">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.department.name}}</span>
+                                <em-select list="departments" select="employee.department" edit-mode="editMode"></em-select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputJobTitle" class="col-sm-4 col-form-label">Job Title</label>
+                            <label class="col-sm-4 col-form-label">Job Title</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputJobTitle" ng-show="mainCtrl.editMode" ng-options="jobtitle.name for jobtitle in mainCtrl.jobtitles track by jobtitle.id"
-                                    ng-model="mainCtrl.employee.jobtitle">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.jobtitle.name}}</span>
+                                <em-select list="jobtitles" select="employee.jobtitle" edit-mode="editMode"></em-select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputManager" class="col-sm-4 col-form-label">Manager</label>
+                            <label class="col-sm-4 col-form-label">Manager</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputManager" ng-show="mainCtrl.editMode" ng-options="employee.name for employee in mainCtrl.employees track by employee.id"
-                                    ng-model="mainCtrl.employee.manager">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.manager.name}}</span>
+                                <em-select list="employees" select="employee.manager" edit-mode="editMode"></em-select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputCoach" class="col-sm-4 col-form-label">Coach</label>
+                            <label class="col-sm-4 col-form-label">Coach</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputCoach" ng-show="mainCtrl.editMode" ng-options="employee.name for employee in mainCtrl.employees track by employee.id"
-                                    ng-model="mainCtrl.employee.coach">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.coach.name}}</span>
+                                <em-select list="employees" select="employee.coach" edit-mode="editMode"></em-select>
                             </div>
                         </div>
                     </div>
@@ -152,87 +123,63 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h4>Citizenship & Other Information</h4>
-
                         <div class="form-group row">
                             <label for="inputNationality" class="col-sm-4 col-form-label">Nationality</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputNationality" ng-show="mainCtrl.editMode" ng-options="nationality.country for nationality in mainCtrl.nationalities track by nationality.id"
-                                    ng-model="mainCtrl.employee.nationality">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.nationality.country}}</span>
+                                <em-select list="nationalities" select="employee.nationality" edit-mode="editMode"></em-select>
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="inputIdentiNationality" class="col-sm-4 col-form-label">Identification No</label>
+                            <label class="col-sm-4 col-form-label">Identification No</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputIdentiNationality" ng-model="mainCtrl.employee.identificationNo" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.identificationNo}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.identificationNo}}</span>
+                                <em-input value="employee.identificationNo" error="errors.identificationNo" edit-mode="editMode"></em-input>
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="inputPassportNo" class="col-sm-4 col-form-label">Passport No</label>
+                            <label class="col-sm-4 col-form-label">Passport No</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputPassportNo" ng-model="mainCtrl.employee.passportNo" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.passportNo}}</span>
+                                <em-input value="employee.passportNo" error="errors.passportNo" edit-mode="editMode"></em-input>
+
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="inputBankAccountNumber" class="col-sm-4 col-form-label">Bank Account Number</label>
+                            <label class="col-sm-4 col-form-label">Bank Account Number</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputBankAccountNumber" ng-model="mainCtrl.employee.bankAccount" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.bankAccount}}</span>
+                                <em-input value="employee.bankAccount" error="errors.bankAccount" edit-mode="editMode"></em-input>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <h4>Contact Information</h4>
                         <div class="form-group row">
-                            <label for="inputHomeAddress" class="col-sm-4 col-form-label">Home Address</label>
+                            <label class="col-sm-4 col-form-label">Home Address</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputHomeAddress" ng-model="mainCtrl.employee.homeAddress" ng-show="mainCtrl.editMode">
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.homeAddress}}</span>
-                                <span ng-show="mainCtrl.errorMode" class="errorText">{{mainCtrl.errors.homeAddress}}</span>
+                                <em-input value="employee.homeAddress" error="errors.homeAddress" edit-mode="editMode"></em-input>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-6">
                         <h4>Citizenship & Other Information</h4>
-
                         <div class="form-group row">
-                            <label for="inputGender" class="col-sm-4 col-form-label">Gender</label>
+                            <label class="col-sm-4 col-form-label">Gender</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputGender" ng-show="mainCtrl.editMode" ng-options="gender.name for gender in mainCtrl.genders track by gender.id"
-                                    ng-model="mainCtrl.employee.gender">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.gender.name}}</span>
+                                <em-select list="genders" select="employee.gender" edit-mode="editMode"></em-select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputMaritalStatus" class="col-sm-4 col-form-label">Marital Status</label>
+                            <label class="col-sm-4 col-form-label">Marital Status</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputMaritalStatus" ng-show="mainCtrl.editMode" ng-options="maritialstatus.status for maritialstatus in mainCtrl.maritialstatuses track by maritialstatus.id"
-                                    ng-model="mainCtrl.employee.maritialstatus">
-                                </select>
-                                <span class="form-control" style="border: none" ng-hide="mainCtrl.editMode">{{mainCtrl.employee.maritialstatus.status}}</span>
+                                <em-select list="maritalstatuses" select="employee.maritialstatus" edit-mode="editMode"></em-select>
                             </div>
                         </div>
-
-
-
                     </div>
                     <div class="col-md-6">
                         <h4>Birth</h4>
                         <div class="form-group row">
-                            <label for="inputDateOfBirth" class="col-sm-4 col-form-label">DateOfBirth</label>
+                            <label class="col-sm-4 col-form-label">DateOfBirth</label>
                             <div class="col-sm-8">
                                 <input type="date" class="form-control" id="inputDateOfBirth" ng-show="mainCtrl.editMode" value='{{mainCtrl.employee.dateOfBirth}}'
                                     ng-model="mainCtrl.employee.dateOfBirth">
@@ -242,10 +189,8 @@
                         </div>
                     </div>
                 </div>
-                
                 <hr>
             </div>
         </div>
-
     </form>
 </div>

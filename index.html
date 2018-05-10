@@ -34,12 +34,15 @@
     <script src="src/employee/form/controllers/create.controller.js"></script>
     <script src="src/employee/form/controllers/update.controller.js"></script>
     <script src="src/employee/app/directives/em-input.directive.js"></script>
-
+    <script src="src/employee/app/filter/andor.filter.js"></script>
+    <script src="src/employee/app/services/filterhelper.service.js"></script>
+    <script src="src/employee/app/directives/em-select.directive.js"></script>
+   <script src="src/employee/app/controllers/em-select.controller.js"></script>
     <base href="/">
     <title>Employee</title>
 </head>
 
-<body ng-app="employee-app">
+<body ng-app="employee-app" ng-controller="MainController">
     <!-- Nav bar -->
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Employee</a>
@@ -50,7 +53,6 @@
             <!-- Left Container -->
             <div class="col-md-2" style="background:palegoldenrod;">
                 <a href="/">Employees</a><br>
-                <a href="/create">Employee</a>
             </div>
 
 
