@@ -1,0 +1,3 @@
+<input type="date" class="form-control" ng-model="value" ng-show="editMode" value="{{value}}">
+<span class="form-control" style="border: none" ng-hide="editMode">{{value | date:"MM/dd/yyyy"}}</span>
+<span class="form-control errorText" style="border: none">{{error}}</span>

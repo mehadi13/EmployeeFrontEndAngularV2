@@ -3,8 +3,8 @@ app.directive('emSelect', function () {
         restrict: 'E',
         controller: 'EMSelectController',
         scope: {
-            list: '=',
-            select: '=?',
+            list: '=', /** list of options */
+            select: '=?', /** default selected value */
             editMode: '=?'
         },
         templateUrl: '/src/employee/app/templates/em-select.html'

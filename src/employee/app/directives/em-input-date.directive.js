@@ -1,12 +1,12 @@
-app.directive('emInput', function () {
+app.directive('emInputDate', function () {
     return {
         restrict: 'E',
     //    controller: 'EMInputController',
         scope: {
-            value: '=',/** model name */
+            value: '=',
             error: '=?',
             editMode: '='
         },
-        templateUrl: '/src/employee/app/templates/em-input.html'
+        templateUrl: '/src/employee/app/templates/em-input-date.html'
     };
 });
